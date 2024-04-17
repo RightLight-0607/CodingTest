@@ -1,7 +1,22 @@
-#include<iostream>
-#include<algorithm>
+#include <stdio.h>
+#include <algorithm>
 
 using namespace std;
+
+int Serch(int arr[], int l, int r, int target)
+{
+	if (l <= r)
+	{
+		int m = (l + r) / 2;
+		if (arr[m] == target)
+			return 1;
+		if (arr[m] > target)
+			return Serch(arr, l, m - 1, target);
+		else if (arr[m] < target)
+			return Serch(arr, m + 1, r, target);
+	}
+	return 0;
+}
 
 int main()
 {
@@ -13,31 +28,12 @@ int main()
 
 	sort(arr, arr + n);
 
-	int count, num, out;
-	int l, r, m;
-	
-	scanf("%d", &count);
-	for (int j = 0; j < count; j++)
+	int m, num;
+	scanf("%d", &m);
+
+	for (int i = 0; i < m; i++)
 	{
 		scanf("%d", &num);
-		out = 0;
-		l = 0;
-		r = n - 1;
-		while (l <= r)
-		{
-			m = (l + r) / 2;
-			if (num < arr[m])
-				r = m - 1;
-
-			else if (num > arr[m])
-				l = m + 1;
-
-			else if (num == arr[m])
-			{
-				out = 1;
-				break;
-			}
-		}
-		printf("%d\n", out);
+		printf("%d\n", Serch(arr, 0, n - 1, num));
 	}
 }
