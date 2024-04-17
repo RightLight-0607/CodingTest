@@ -28,12 +28,13 @@ int main()
 
 	sort(arr, arr + n);
 
-	int m, num;
+	int m;
 	scanf("%d", &m);
+	int* arr2 = new int[m];
 
 	for (int i = 0; i < m; i++)
-	{
-		scanf("%d", &num);
-		printf("%d\n", Serch(arr, 0, n - 1, num));
-	}
+		scanf("%d", &arr2[i]);
+
+	for (int i = 0; i < m; i++)
+		printf("%d\n", Serch(arr, 0, n - 1, arr2[i]));
 }
